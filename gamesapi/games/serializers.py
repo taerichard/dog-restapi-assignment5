@@ -39,6 +39,7 @@ class BreedSerializer(serializers.HyperlinkedModelSerializer):
             'pk',
             'name',
             'size',
+            'exerciseneeds'
             'friendliness',
             'trainability',
             'sheddingamount',
