@@ -5,13 +5,37 @@ from games.models import GameCategory
 from games.models import Game
 from games.models import Player
 from games.models import PlayerScore
-from games.serializers import GameCategorySerializer
+from games.models import Dog
+from games.models import Breed
+from games.serializers import BreedSerializer, GameCategorySerializer, DogSerializer
 from games.serializers import GameSerializer
 from games.serializers import PlayerSerializer
 from games.serializers import PlayerScoreSerializer
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+
+class BreedList(generics.ListCreateAPIView):
+    # queryset = Breed.objects.all()
+    # serializer_class = BreedSerializer
+     name = 'breed-list'
+     def get(self, request, format=None):
+        breeds = Breed.objects.all()
+        serializer = BreedSerializer(breeds, many=True)
+        return Response(serializer.data)
+    
+     def post(self, request, format=None):
+        serializer = BreedSerializer(data=request.data)
+        print('HIGM')
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DogList(generics.ListCreateAPIView):
+    queryset = Dog.objects.all()
+    serializer_class = DogSerializer
+    name = 'dog-list'
 
 
 class GameCategoryList(generics.ListCreateAPIView):
@@ -69,5 +93,7 @@ class ApiRoot(generics.GenericAPIView):
             'players': reverse(PlayerList.name, request=request),
             'game-categories': reverse(GameCategoryList.name, request=request),
             'games': reverse(GameList.name, request=request),
-            'scores': reverse(PlayerScoreList.name, request=request)
+            'scores': reverse(PlayerScoreList.name, request=request),
+            'breeds':reverse(BreedList.name, request=request),
+            'dogs':reverse(DogList.name, request=request),
             })

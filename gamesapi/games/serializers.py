@@ -6,6 +6,46 @@ from games.models import GameCategory
 from games.models import Game
 from games.models import Player
 from games.models import PlayerScore
+from games.models import Dog
+from games.models import Breed
+
+class BreedSerializer(serializers.HyperlinkedModelSerializer):
+    # We want to display the game cagory's name instead of the id
+    dogs = serializers.HyperlinkedRelatedField(
+    #HyperlinkedRelatedField with many and read_only equal to True because it is a one-to-many relationship and it is read-only
+        many=True,
+        read_only=True,
+        view_name='dog-detail')
+
+    def create(self, name):
+        return Breed.objects.create()
+
+    class Meta:
+        model = Breed
+        fields = (
+            'url',
+            'pk',
+            'name',
+            'size',
+            'friendliness',
+            'trainability',
+            'sheddingamount',
+            'dogs'
+            )
+
+class DogSerializer(serializers.HyperlinkedModelSerializer):
+    # We want to display the game cagory's name instead of the id
+    breed = serializers.SlugRelatedField(queryset=Breed.objects.all(), slug_field='name')
+
+    class Meta:
+        model = Game
+        fields = (
+            'url',
+            'breed',
+            'name',
+            )
+
+
 
 
 class GameCategorySerializer(serializers.HyperlinkedModelSerializer):

@@ -13,6 +13,13 @@ from games import views
 urlpatterns = [
     # You might also need to change url
     # in the following to re_path
+    re_path(r'^breeds/$', 
+        views.BreedList.as_view(), 
+        name=views.BreedList.name),
+      re_path(r'^dogs/$', 
+        views.DogList.as_view(), 
+        name=views.DogList.name),  
+          
     re_path(r'^game-categories/$', 
         views.GameCategoryList.as_view(), 
         name=views.GameCategoryList.name),
