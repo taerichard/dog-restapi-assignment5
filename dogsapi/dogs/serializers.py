@@ -24,6 +24,7 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
             'color',
             'favoritefood',
             'favoritetoy',
+            'genderdescription'
             )
 
 class BreedSerializer(serializers.HyperlinkedModelSerializer):
@@ -42,7 +43,7 @@ class BreedSerializer(serializers.HyperlinkedModelSerializer):
             'url',
             'name',
             'size',
-            'exerciseneeds'
+            'exerciseneeds',
             'friendliness',
             'trainability',
             'sheddingamount',

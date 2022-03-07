@@ -23,8 +23,10 @@ class Breed(models.Model):
 
     trainability = models.IntegerField(
         default = 1, validators= [MaxValueValidator(5), MinValueValidator(1)])
+
     sheddingamount = models.IntegerField(
         default = 1, validators= [MaxValueValidator(5), MinValueValidator(1)])
+        
     exerciseneeds = models.IntegerField(
         default = 1, validators= [MaxValueValidator(5), MinValueValidator(1)])
 
