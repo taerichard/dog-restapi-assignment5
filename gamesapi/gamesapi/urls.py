@@ -21,5 +21,7 @@ from django.urls import re_path, include
 urlpatterns = [
     #url(r'^', include('games.urls')),
     re_path(r'^', include('games.urls')),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^', include('dogs.urls')),
 ]
 
