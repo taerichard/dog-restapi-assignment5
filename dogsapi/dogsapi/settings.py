@@ -3,10 +3,11 @@ Book: Building RESTful Python Web Services
 """
 
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -31,8 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Django REST Framework
     'rest_framework',
-    # Games application
-    'games.apps.GamesConfig',
+    'dogs.apps.DogsConfig',
 ]
 
 MIDDLEWARE = [
@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gamesapi.urls'
+ROOT_URLCONF = 'dogsapi.urls'
 
 TEMPLATES = [
     {
@@ -63,30 +63,35 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gamesapi.wsgi.application'
+WSGI_APPLICATION = 'dogsapi.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#         # Replace username with your desired user name        
+#         # 'USER': 'postgres',
+#         # Replace password with your desired password        
+#         # 'PASSWORD': 'Shibalnom1989$$',
+#         # Replace 127.0.0.1 with the PostgreSQL host        
+#         # 'HOST': 'localhost', 
+#         #Replace 5432 with the PostgreSQL configured port         
+#         # case you aren't using the default port        
+#         # 'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        # Replace games with your desired database name 
-        'NAME': 'games',
-        # Replace username with your desired user name        
-        'USER': 'postgres',
-        # Replace password with your desired password        
-        'PASSWORD': 'Shibalnom1989$$',
-        # Replace 127.0.0.1 with the PostgreSQL host        
-        'HOST': 'localhost', 
-        #Replace 5432 with the PostgreSQL configured port         
-        # case you aren't using the default port        
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 

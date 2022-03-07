@@ -7,7 +7,7 @@ Book: Building RESTful Python Web Services
 
 # from django.urls import re_path -  Use this incase
 from django.urls import re_path
-from games import views
+from dogs import views
 
 
 urlpatterns = [

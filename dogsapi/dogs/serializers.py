@@ -2,12 +2,16 @@
 Book: Building RESTful Python Web Services
 """
 from rest_framework import serializers
-from games.models import Dog
-from games.models import Breed
+from dogs.models import Dog
+from dogs.models import Breed
 
 class DogSerializer(serializers.HyperlinkedModelSerializer):
-    # We want to display the game cagory's name instead of the id
-    breed = serializers.SlugRelatedField(queryset=Breed.objects.all(), slug_field='name')
+    # We want to display the dog's name instead of the id
+    breed = serializers.SlugRelatedField(queryset=Breed.objects.all(), slug_field='name') 
+    gender = serializers.ChoiceField(choices=Dog.genderoptions)
+    genderdescription = serializers.CharField(
+        source='get_gender_display',
+        read_only=True)
     
     class Meta:
         model = Dog
@@ -23,20 +27,19 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
             )
 
 class BreedSerializer(serializers.HyperlinkedModelSerializer):
-    # We want to display the game cagory's name instead of the id
-    # dogs = serializers.HyperlinkedRelatedField(
-    # #HyperlinkedRelatedField with many and read_only equal to True because it is a one-to-many relationship and it is read-only
-    #     many=True,
-    #     read_only=True,
-    #     view_name='dog-detail')
-    dogs = DogSerializer(many=True, read_only=True)
-    size = serializers.ChoiceField(choices=Breed.SIZE_CHOICES)
+    dogs = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='dog-detail'
+    )
+    #size = serializers.ChoiceField(choices=Breed.SIZE_CHOICES)
+
+    #deleted pk since we are using names 
 
     class Meta:
         model = Breed
         fields = (
             'url',
-            'pk',
             'name',
             'size',
             'exerciseneeds'

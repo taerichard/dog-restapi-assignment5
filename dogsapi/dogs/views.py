@@ -1,7 +1,7 @@
 
-from games.models import Dog
-from games.models import Breed
-from games.serializers import BreedSerializer, DogSerializer
+from dogs.models import Dog
+from dogs.models import Breed
+from dogs.serializers import BreedSerializer, DogSerializer
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse

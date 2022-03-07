@@ -37,6 +37,13 @@ class Breed(models.Model):
 
 
 class Dog(models.Model):
+    # create gender options 
+    genderoptions = (
+        ("M","MALE"),
+        ("F", "FEMALE")
+    )
+
+
     name = models.CharField(max_length=200, unique=True) # Adding unique argument and set it to True
     age = models.IntegerField()
     breed = models.ForeignKey(
