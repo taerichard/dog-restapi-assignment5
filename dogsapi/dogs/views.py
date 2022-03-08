@@ -26,7 +26,6 @@ class DogDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = DogSerializer
   name = 'dog-detail'
 
-
 class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
     def get(self, request, *args, **kwargs):

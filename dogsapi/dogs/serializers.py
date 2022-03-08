@@ -19,7 +19,7 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
             'url',
             'breed',
             'name',
-             'age',
+            'age',
             'gender',
             'color',
             'favoritefood',
@@ -28,7 +28,6 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
             )
 
 class BreedSerializer(serializers.HyperlinkedModelSerializer):
-    print('eh')
     dogs = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,

@@ -35,8 +35,6 @@ class Breed(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Dog(models.Model):
     # create gender options 
     genderoptions = (
@@ -47,7 +45,8 @@ class Dog(models.Model):
     name = models.CharField(max_length=200, unique=True) # Adding unique argument and set it to True
     age = models.IntegerField()
     breed = models.ForeignKey(
-        Breed, 
+        Breed,
+        related_name='dogs',  
         on_delete=models.CASCADE)
     gender = models.CharField(max_length=200)
     color = models.CharField(max_length=200) 
