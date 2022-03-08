@@ -28,6 +28,7 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
             )
 
 class BreedSerializer(serializers.HyperlinkedModelSerializer):
+    print('eh')
     dogs = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
@@ -41,12 +42,12 @@ class BreedSerializer(serializers.HyperlinkedModelSerializer):
         model = Breed
         fields = (
             'url',
+            'dogs',
             'name',
             'size',
             'exerciseneeds',
             'friendliness',
             'trainability',
-            'sheddingamount',
-            'dogs'
+            'sheddingamount'
             )
 

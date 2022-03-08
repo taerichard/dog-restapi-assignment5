@@ -11,20 +11,6 @@ from dogs import views
 
 
 urlpatterns = [
-    # You might also need to change url
-    # in the following to re_path
-    # re_path(r'^breeds/$', 
-    #     views.BreedList.as_view(), 
-    #     name=views.BreedList.name),
-    #   re_path(r'^dogs/$', 
-    #     views.DogList.as_view(), 
-    #     name=views.DogList.name),
-    #   re_path(r'^dogs/$', 
-    #     views.DogList.as_view(), 
-    #     name=views.DogList.name),    
-    # re_path(r'^$',
-    #     views.ApiRoot.as_view(),
-    #     name=views.ApiRoot.name),
     re_path(r'^dogs/$', views.DogList.as_view(), name=views.DogList.name),
     re_path(r'^dogs/(?P<pk>[0-9]+)/$', views.DogDetail.as_view(), name=views.DogDetail.name),
     re_path(r'^breeds/$', views.BreedList.as_view(), name=views.BreedList.name),

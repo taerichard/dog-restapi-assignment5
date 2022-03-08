@@ -17,7 +17,7 @@ class Breed(models.Model):
         choices=SIZE_CHOICES,
         max_length=10
     )
-
+    
     friendliness = models.IntegerField(
         default = 1, validators= [MaxValueValidator(5), MinValueValidator(1)])
 
@@ -32,7 +32,6 @@ class Breed(models.Model):
 
     class Meta: 
         ordering = ('name',)
-
     def __str__(self):
         return self.name
 
@@ -44,7 +43,6 @@ class Dog(models.Model):
         ("M","MALE"),
         ("F", "FEMALE")
     )
-
 
     name = models.CharField(max_length=200, unique=True) # Adding unique argument and set it to True
     age = models.IntegerField()
@@ -58,8 +56,7 @@ class Dog(models.Model):
 
     class Meta: 
         ordering = ('name',)
-
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
 
 

@@ -11,21 +11,10 @@ class BreedList(generics.ListCreateAPIView):
     serializer_class = BreedSerializer
     name = 'breed-list'
 
-    #  def get(self, request, format=None):
-    #     breeds = Breed.objects.all()
-    #     serializer = BreedSerializer(breeds, many=True)
-    #     return Response(serializer.data)
-
-    #  def get(self, request, *args, **kwargs):
-    #     return self.list(request, *args, **kwargs)
-    
-    #  def post(self, request, format=None):
-    #     serializer = BreedSerializer(data=request.data)
-    #     print('HIGM')
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class BreedDetail(generics.RetrieveUpdateDestroyAPIView):
+  queryset = Breed.objects.all()
+  serializer_class = BreedSerializer
+  name = 'breed-detail'
 
 class DogList(generics.ListCreateAPIView):
     queryset = Dog.objects.all()
@@ -37,10 +26,6 @@ class DogDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = DogSerializer
   name = 'dog-detail'
 
-class BreedDetail(generics.RetrieveUpdateDestroyAPIView):
-  queryset = Breed.objects.all()
-  serializer_class = BreedSerializer
-  name = 'breed-detail'
 
 class ApiRoot(generics.GenericAPIView):
     name = 'api-root'

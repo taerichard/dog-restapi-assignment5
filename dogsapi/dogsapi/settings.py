@@ -65,27 +65,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dogsapi.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#         # Replace username with your desired user name        
-#         # 'USER': 'postgres',
-#         # Replace password with your desired password        
-#         # 'PASSWORD': 'Shibalnom1989$$',
-#         # Replace 127.0.0.1 with the PostgreSQL host        
-#         # 'HOST': 'localhost', 
-#         #Replace 5432 with the PostgreSQL configured port         
-#         # case you aren't using the default port        
-#         # 'PORT': '5432',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -129,9 +108,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS':
-    #'rest_framework.pagination.LimitOffsetPagination', # The pagination style works with limit that indicates the maximum number of items to return
-    'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10            # and an offset that specify the starting position of the Query
-}                             # The value for the PAGE_SIZE settings key specifies a global setting with the default value for limit, also know as page size
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS':
+#     #'rest_framework.pagination.LimitOffsetPagination', # The pagination style works with limit that indicates the maximum number of items to return
+#     'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 10            # and an offset that specify the starting position of the Query
+# }                             # The value for the PAGE_SIZE settings key specifies a global setting with the default value for limit, also know as page size
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
